@@ -125,3 +125,36 @@ Check out https://github.com/SteamDatabase/ValveResourceFormat/
 .. |master_build| image:: https://img.shields.io/travis/ValvePython/vpk/master.svg?style=flat&label=master%20build
     :target: http://travis-ci.org/ValvePython/vpk
     :alt: Build status of master branch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  cp /Users/lizx/vpk/vpk/__init__.py /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/vpk/__init__.py && cp /Users/lizx/vpk/vpk/cli.py /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/vpk/cli.py 
+
+  vpk  /Users/lizx/Library/Application\ Support/Steam/SteamApps/workshop/content/570/1613886175/1613886175.vpk -x ~/code/chess-vpk/
+  vpk  -c ~/code/chess-vpk/ xxx.vpk
+  vpk xxx.vpk -x ~/code/chess-vpk-edit/

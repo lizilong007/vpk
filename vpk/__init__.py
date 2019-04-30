@@ -47,7 +47,6 @@ class NewVPK(object):
         self.tree = {}
         self.file_count = 0
         self.path = path
-
         for root, _, filelist in os.walk(path):
             rel = root[len(path):].lstrip('/\\')
 
@@ -110,13 +109,13 @@ class NewVPK(object):
 
             # write file tree
             for ext in self.tree:
-                f.write("{0}\x00".format(ext).encode('latin-1'))
+                f.write("{0}\x00".format(ext).encode('UTF-8'))
 
                 for relpath in self.tree[ext]:
-                    f.write("{0}\x00".format(relpath).encode('latin-1'))
+                    f.write("{0}\x00".format(relpath).encode('UTF-8'))
 
                     for filename in self.tree[ext][relpath]:
-                        f.write("{0}\x00".format(filename).encode('latin-1'))
+                        f.write("{0}\x00".format(filename).encode('UTF-8'))
 
                         # append file data
                         metadata_offset = f.tell()
@@ -183,7 +182,7 @@ def _read_cstring(f):
 
         buf += chunk
 
-    return buf.decode('latin1')
+    return buf.decode('UTF-8')
 
 class VPK(object):
     """
@@ -386,6 +385,7 @@ class VPK(object):
                     raise ValueError("Error parsing index (out of bounds)")
 
                 ext = _read_cstring(f)
+
                 if ext == '':
                     break
 
@@ -397,12 +397,10 @@ class VPK(object):
                         path = os.path.join(path, '')
                     else:
                         path = ''
-
                     while True:
                         name = _read_cstring(f)
                         if name == '':
                             break
-
                         (crc32,
                          preload_length,
                          archive_index,
